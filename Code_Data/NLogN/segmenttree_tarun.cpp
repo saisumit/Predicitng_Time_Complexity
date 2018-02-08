@@ -2,9 +2,8 @@
 const int MAXN = 1e6  ;
 
 using namespace std;
-
-vector<int> t;
-void build (vector<int>  a, int v, int tl, int tr) {
+int t[ 4*MAXN + 5 ] ;
+void build (vector<int>&  a, int v, int tl, int tr) {
 	if (tl == tr)
 		t[v] = a[tl];
 	else {
@@ -19,15 +18,15 @@ int main(  )
 
 
    const clock_t begin_time = clock();
-   NUM_LOOPS = (int)1e8;
+   int NUM_LOOPS = (int)1e8;
    for( int i = 1 ; i <= NUM_LOOPS ; i ++ ) ;
    double k =  float( clock () - begin_time ) /  CLOCKS_PER_SEC;
    double processor_unit_time  =  k/NUM_LOOPS ;  // output meib ibckude kr
     //cout<<processor_unit_time<<" ";
 
    //  int n ;
-  freopen("a.out", "w", stdout);
-  for( int i  = 0 ;  i  < 5000; i ++ )
+  //freopen("segmenttree_sumit.out", "w", stdout);
+  for( int i  = 0 ;  i  < 60 ; i ++ )
    {
 
       int N  = rand()%MAXN ;  // output meib ibckude kr
@@ -42,8 +41,6 @@ int main(  )
           A[i] = rand()%(int)( 1e9 )   ;
 
          }
-        t.resize(4*N,0);
-
       /* This is the initialisation part */
 
 
@@ -66,4 +63,8 @@ int main(  )
 
 
 
- }
+
+  }
+
+
+
