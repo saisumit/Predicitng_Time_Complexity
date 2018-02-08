@@ -26,7 +26,7 @@ int main(  )
 
    //  int n ;
   //freopen("segmenttree_sumit.out", "w", stdout);
-  for( int i  = 0 ;  i  < 60 ; i ++ )
+  for( int i  = 0 ;  i  < 5000 ; i ++ )
    {
 
       int N  = rand()%MAXN ;  // output meib ibckude kr
