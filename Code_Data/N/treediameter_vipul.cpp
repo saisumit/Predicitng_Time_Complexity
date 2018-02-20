@@ -6,7 +6,9 @@ using namespace std;
 
 //vector<int> f(MAXN,0);
 //vector<int> G(MAXN,0);
-int *f,*g;
+
+int f[MAXN+4];
+int g[MAXN+4];
 int diameter;
 
 
@@ -47,14 +49,14 @@ int main(  )
 
 
    //  int n ;
-  freopen("treediameter_vipul.out", "w", stdout);
-  for( int i  = 0 ;  i  <  5000 ; i ++ )
+  freopen("treediameter_sumit2.out", "w", stdout);
+  for( int i  = 0 ;  i  <  553 ; i ++ )
    {
 
       int N  = rand()%MAXN ;  // output meib ibckude kr
       //N=2375;
       vector<vector<int> > G(N) ;
-
+      diameter =0 ;
 
       /* This is the initialisation part */
 
@@ -67,18 +69,13 @@ int main(  )
            G[i].push_back(prev_node);
 
          }
-        f = (int *)malloc((N)*sizeof(int));
-        g = (int *)malloc((N)*sizeof(int));
+
        const clock_t b1 = clock();
 
        //dfs(G,0);
        dfs(G,0,-1);
 
        double  k =  float( clock () - b1 ) /  CLOCKS_PER_SEC; // output meib ibckude kr
-        free(f);
-        free(g);
-       /* code computaion part */
-
 
        printf("%d,%.12f,%.12f\n",N,k,processor_unit_time);
 
