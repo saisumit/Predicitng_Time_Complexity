@@ -50,7 +50,7 @@ int main(  )
 
    //  int n ;
   freopen("treediameter_sumit2.out", "w", stdout);
-  for( int i  = 0 ;  i  <  553 ; i ++ )
+  for( int i  = 0 ;  i  <  5000 ; i ++ )
    {
 
       int N  = rand()%MAXN ;  // output meib ibckude kr
