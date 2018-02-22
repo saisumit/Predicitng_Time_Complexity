@@ -1,17 +1,18 @@
 #include <bits/stdc++.h>
-const int MAXN = 1e6  ;
+const int MAXN = 1e4  ;
 #include <algorithm>
 #include <vector>
 using namespace std;
-bool linear(vector<int> A,int n,int x)
+void bubble(vector<int> &A,int n)
 {
-    for(int i=0;i<n;i++)
+    for (int i = 0; i < n-1; i++)
     {
-        if(A[i]==x)
-        return true;
-
+       for (int j = 0; j < n-i-1; j++)
+           {
+                if (A[j] > A[j+1])
+                    swap(A[j], A[j+1]);
+            }
     }
-    return false;
 }
 int main(  )
  {
@@ -26,39 +27,40 @@ int main(  )
 
 
    //  int n ;
-  freopen("linearsearch_tarun.out", "w", stdout);
-  for( int i  = 0 ;  i  <  5000 ; i ++ )
+  freopen("bubblesort_tarun.out", "w", stdout);
+  for( int i  = 0 ;  i  <  5000; i ++ )
    {
 
       int N  = rand()%MAXN ;  // output meib ibckude kr
-      
+
 
 
       /* This is the initialisation part */
 
 
-      if( i < 50 )N = rand()%100 + 1 ;
-      vector<int>A( N ) ;
+      if( i < 50 )N = rand()%(int)(100) + 1 ;
+
+       vector<int> A( N ) ;
       for( int i = 0 ; i < N ; i ++ )
         {
           A[i] = rand()%(int)( 1e9 )   ;
          }
 
-        int x = rand()%(int)(1e9);
       /* This is the initialisation part */
-
+    //cout<<N<<" ";
 
      /* code computaion part */
        struct Node* root  = NULL ;
        const clock_t b1 = clock();
 
-        linear(A,N,x);
+            bubble(A,N);
+
 
        double  k =  float( clock () - b1 ) /  CLOCKS_PER_SEC; // output meib ibckude kr
 
        /* code computaion part */
 
-
+        //print(A,N);
 
        printf("%d,%.12f,%.12f\n",N,k,processor_unit_time);
 
@@ -69,3 +71,4 @@ int main(  )
 
 
  }
+
