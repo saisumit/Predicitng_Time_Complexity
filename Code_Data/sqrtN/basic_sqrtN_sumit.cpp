@@ -9,7 +9,7 @@ int main()
     for(int i=0;i<=MAXN;i++);
     double k =  float( clock () - time_st )/CLOCKS_PER_SEC;
     double processor_unit_time  =  k/MAXN ;
-    freopen("basic_nsqrtn_sumit.out","w",stdout);
+    freopen("basic_sqrtn_sumit.out","w",stdout);
   
     for(int i=1;i<=5000;i++)
     {
@@ -17,7 +17,7 @@ int main()
         if(i<=50)
             n = rand()%(int)(100);
         else
-            n = rand()%(int)(1e5);
+            n = rand()%(int)(1e9);
         
         
         const clock_t start_t = clock();
