@@ -21,6 +21,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 import pickle
 import seaborn as sns 
+import pickle
 
 
 label_inverse_mappings = { } 
@@ -118,8 +119,14 @@ for i in range(0,len(X_test)):
 
 
 
-clf = XGBClassifier( learning_rate=0.03,n_estimators= 200  ,max_depth= 7 ,min_child_weight=0.7,gamma=0,subsample=0.8,colsample_bytree=1,objective= 'binary:logistic',scale_pos_weight=1,seed=27)
-clf=clf.fit(X_train,y_train,eval_metric='mlogloss')
+# clf = XGBClassifier( learning_rate=0.03,n_estimators= 200  ,max_depth= 7 ,min_child_weight=0.7,gamma=0,subsample=0.8,colsample_bytree=1,objective= 'binary:logistic',scale_pos_weight=1,seed=27)
+# clf=clf.fit(X_train,y_train,eval_metric='mlogloss')
+
+# # save model to file
+# pickle.dump(clf, open("pima.pickle.dat", "wb"))
+
+
+clf = pickle.load(open("sai_model.pickle.dat", "rb"))
 
 
 plot_importance(clf)
@@ -127,12 +134,19 @@ plt.show()
 plt.savefig('myfig')
 
 
-
+feature_list = ['N','time_taken','clock_time','ram','clock_cycle','processor','series','cores','avg_clock_cycle','memory_type']
 pred=clf.predict(X_train)
 print("training accuracy: "+str(metrics.r2_score(y_train,pred)))
 conf_arr_train = confusion_matrix( y_train ,  pred )	
 
 pred = clf.predict(X_test)
+for i in range( 0 , 50 ):
+	for j in range(0,len(X_test[i])):
+		print(feature_list[j], " " , X_test[i][j] )
+	print( label_inverse_mappings[ y_test[i] ] , " predicted_xgb ", label_inverse_mappings[  pred[i] ] , " predicted_brute ",  label_inverse_mappings[ y_test_brute_pred[i] ] )
+	print( " -- " )
+	print( " -- ") 
+
 print("test_accuracy: "+str(metrics.r2_score(y_test,pred)))
 conf_arr_test = confusion_matrix( y_test ,  pred )
 
@@ -147,7 +161,7 @@ conf_arr_brute_train = confusion_matrix(y_train,y_train_brute_pred )
 
 
 # save model to file
-pickle.dump( clf, open("sai_model.pickle.dat", "wb"))
+# pickle.dump( clf, open("sai_model.pickle.dat", "wb"))
 
 # # some time later...
 
